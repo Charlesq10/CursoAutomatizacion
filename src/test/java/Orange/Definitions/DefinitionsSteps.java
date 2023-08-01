@@ -1,6 +1,7 @@
 package Orange.Definitions;
 
 import Orange.Pages.LoginPage;
+import Orange.Pages.PimPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -18,6 +19,8 @@ public class DefinitionsSteps {
     private Conexion conexion = new Conexion();
     private LoginPage loginPage = new LoginPage(driver);
 
+    private PimPage pimPage = new PimPage(driver);
+
 
     @Given("^open the browser$")
     public void abrir_navegador() {
@@ -32,16 +35,21 @@ public class DefinitionsSteps {
         this.loginPage.fillOutLogin(userName, password);
     }
 
-    @When("^press the Login button$")
-    public void clickLoginButton() {
-        this.loginPage.clickLoginButton();
+    @When("^the user select option add employee$")
+    public void goAddEmployee() {
+        this.pimPage = new PimPage(driver);
+        this.pimPage.goAddEmployee();
     }
 
-    /*@Then("^I should be logged in$")
-    public void iShouldBeLoggedIn(){
+    @When("^the user fill out first name (.*) middle name (.*) last name (.*)$")
+    public void fillOutAddEmployee(String firstName, String middleName, String lastName){
+        this.pimPage = new PimPage(driver);
+        this.pimPage.fillOutAddEmployee(firstName, middleName, lastName);
+    }
 
-        String expectedTitle = "Dashboard";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals("The expected title is not displayed", expectedTitle, actualTitle);
-    }*/
+    @Then("^the user validate (.*) (.*)$")
+    public void validateEmployee (String firstName, String lastName){
+        this.pimPage = new PimPage(driver);
+        this.pimPage.validateEmployee(firstName, lastName);
+    }
 }

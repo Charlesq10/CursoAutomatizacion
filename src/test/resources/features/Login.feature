@@ -3,11 +3,11 @@
 #Jhonatan Medina Blanco
 Feature: Como usuario quiero validar el Login
 
+  @HU001 @Regresion
   Scenario Outline: login exitoso
     Given open the browser
     When the user fill out user <userName> password <password>
-    And press the Login button
-    #Then I should be logged in
+    #Then the user validate dashboard <user>
 
     Examples:
       | userName | password |
