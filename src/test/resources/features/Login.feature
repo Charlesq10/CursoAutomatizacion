@@ -1,6 +1,3 @@
-#Proyecto de pruebas y cargado en Github
-#27/01/2020
-#Jhonatan Medina Blanco
 Feature: Como usuario quiero validar el Login
 
   @HU001 @Regresion
